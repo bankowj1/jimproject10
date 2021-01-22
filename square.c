@@ -13,13 +13,10 @@ int m =4;
 int n =pts->n;
 int r=5;
 
-void matrixa(){
-	matrix_t * A = make_matrix(r,1);
-}
 
 
 void matrixB(points_t * pts){
-	matrix_t * B = make_matrix(r,r);
+	matrix_t * M = make_matrix(r,r+1);
 	double * X;
 	X = (double*)malloc ((2*m+1)*sizeof(double));
 		for(int i=0; i < (2*m+1) ; i++)
@@ -27,32 +24,42 @@ void matrixB(points_t * pts){
 			X[i]=0;
 			for(int j=0 ; j < n; j++)
 			{
-				X[i]=X[i]+pow(pts->x[j],(double)i);
+				X[i] += pow(pts->x[j],(double)i);
 			}
 		}
+	double *B;
+	B = (double*)malloc ((m+1)*(m+1)*sizeof(double));
 		for(int i=0; i <(m+1);i++)
 		{
 			for(int j=0; j<(m+1);j++)
 			{
-				B->e[i*j+j]=X[i+j];
+				B[i*j+j]=X[i+j];
 			}
 		}
-	
-}
-
-
-void matrixY(points_t * pts){
-	matrix_t * Y = make_matrix(r,1);
-	double yy;
+	double* Y;
+	Y = (double*)malloc ((m+1)*sizeof(double));
 		for(int i=0; i<(m+1);i++)
 		{
-		yy=0;
+		Y[i]=0;
 			for(int j=0; j<n;j++)
 			{
-				yy += ( pow(pts->x[j],(double)i) * (pts->y[j]));
+				Y[i] += ( pow(pts->x[j],(double)i) * (pts->y[j]) );
 			}
-		Y->e[i]=yy;
 		}
+	for(int i=0; i <m+1;i++)
+	{
+		for(int j=0; j<m+2;j++)
+		{	
+			if(j!=m+1)
+			{
+				M->e[i*j+j]=B[i*(j-1)+j];	
+			}else{
+				M->e[i*j+j]=Y[i];
+			}
+		}
+	}
+
+
 }
 
 
