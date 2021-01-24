@@ -3,8 +3,6 @@
 #include <math.h>
 
 #include "square.h"
-#include "points.h"
-#include "piv_ge_solver.h"
 
 //pts->x[n] 
 //pts->y[n]
@@ -12,10 +10,7 @@
 int m =4;
 int n =pts->n;
 int r=5;
-
-
-
-void matrixB(points_t * pts){
+matrix_t * matrixB(points_t * pts){
 	matrix_t * M = make_matrix(r,r+1);
 	double * X;
 	X = (double*)malloc ((2*m+1)*sizeof(double));
@@ -58,8 +53,7 @@ void matrixB(points_t * pts){
 			}
 		}
 	}
-
-
+	return M;
 }
 
 

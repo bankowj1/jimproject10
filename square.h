@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 #include "points.h"
+#include "piv_ge_solver.h"
 
-
-void matrixB(points_t * pts);
+matrix_t * matrixB(points_t * pts);
 
 #endif
 
