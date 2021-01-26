@@ -25,15 +25,19 @@ make_spl(points_t * pts, spline_t * spl)
 	for (j = 0; j < nb; j++) {
 		for (i = 0; i < nb; i++)
 			for (k = 0; k < pts->n; k++)
-				add_to_entry_matrix(eqs, j, i,);
+				add_to_entry_matrix(eqs, j, i,pow(pts->x[k],(double)(j+i));
 
 		for (k = 0; k < pts->n; k++)
-			add_to_entry_matrix(eqs, j, nb, );
+			add_to_entry_matrix(eqs, j, nb, pts->y[k] * pow(pts->x[k],(double)(j));
 	}
 
 	if (piv_ge_solver(eqs)) {
 		spl->n = 0;
 		return;
+	}
+	for(i = 0; i < nb; i++)
+	{
+		v[i]=get_entry_matrix(eqs, i, nb);
 	}
 
 	if (alloc_spl(spl, nb) == 0) {
