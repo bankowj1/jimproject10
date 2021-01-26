@@ -6,46 +6,46 @@
 #include <float.h>
 #include <math.h>
 
-double dfi(double v[], double x){
+double fi(double v[], double x){
 	double sum = 0;
 	for(int i = 0; i < 5; i++){
-		sum += pow(x,(double)i)*v[i]
+		sum += pow(x,(double)i)*v[i];
 	}
 	return sum;
 }
 
-double dfi1(double v[], double x){
+double dfi(double v[], double x){
 	double sum = 0;
 	int p = 0;
 	for(int i = 1; i < 5; i++){
-		sum += pow(x,(double)p)*v[i]
+		sum += pow(x,(double)p)*v[i];
 	}
 	return sum;	
 }
 
-double dfi2(double v[], double x){
+double d2fi(double v[], double x){
 	double sum = 0;
 	int p = 0;
 	for(int i = 2; i < 5; i++){
-		sum += pow(x,(double)p)*v[i]
+		sum += pow(x,(double)p)*v[i];
 	}	
 	return sum;	
 }
 
-double dfi3(double v[], double x){
+double d3fi(double v[], double x){
 	double sum = 0;
 	int p = 0;
 	for(int i = 3; i < 5; i++){
-		sum += pow(x,(double)p)*v[i]
+		sum += pow(x,(double)p)*v[i];
 	}	
 	return sum;	
 }
 
-double dfi4(double v[], double x){
+double d4fi(double v[], double x){
 	double sum = 0;
 	int p = 0;
 	for(int i = 4; i < 5; i++){
-		sum += pow(x,(double)p)*v[i]
+		sum += pow(x,(double)p)*v[i];
 	}	
 	return sum;	
 }
@@ -62,7 +62,7 @@ make_spl(points_t * pts, spline_t * spl)
 	double		a = x[0];
 	double		b = x[pts->n - 1];
 	int		i, j, k;
-	double 		v[5];
+	double 		v[5]={0};
 	int		nb = 5;
 	eqs = make_matrix(nb, nb + 1);
 
@@ -70,10 +70,10 @@ make_spl(points_t * pts, spline_t * spl)
 	for (j = 0; j < nb; j++) {
 		for (i = 0; i < nb; i++)
 			for (k = 0; k < pts->n; k++)
-				add_to_entry_matrix(eqs, j, i,pow(pts->x[k],(double)(j+i));
+				add_to_entry_matrix(eqs, j, i,pow(pts->x[k],(double)(j+i)));
 
 		for (k = 0; k < pts->n; k++)
-			add_to_entry_matrix(eqs, j, nb, pts->y[k] * pow(pts->x[k],(double)(j));
+			add_to_entry_matrix(eqs, j, nb, pts->y[k] * pow(pts->x[k],(double)(j)));
 	}
 
 	if (piv_ge_solver(eqs)) {
@@ -98,7 +98,7 @@ make_spl(points_t * pts, spline_t * spl)
 			spl->f1[i] +=  dfi (v, xx);
 			spl->f2[i] +=  d2fi(v, xx);
 			spl->f3[i] +=  d3fi(v, xx);
-			spl->f4[i] +=  d3fi(v, xx);
+			spl->f4[i] +=  d4fi(v, xx);
 		}
 	}
 
