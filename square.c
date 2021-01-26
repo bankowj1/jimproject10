@@ -78,7 +78,6 @@ make_spl(points_t * pts, spline_t * spl)
 	int		nb = 5;
 	eqs = make_matrix(nb, nb + 1);
 
-
 	for (j = 0; j < nb; j++) {
 		for (i = 0; i < nb; i++)
 			for (k = 0; k < pts->n; k++)
@@ -96,6 +95,7 @@ make_spl(points_t * pts, spline_t * spl)
 	{
 		v[i]=get_entry_matrix(eqs, i, nb);
 	}
+	free_matrix(eqs);
 
 	if (alloc_spl(spl, nb) == 0) {
 		for (i = 0; i < spl->n; i++) {
