@@ -6,6 +6,51 @@
 #include <float.h>
 #include <math.h>
 
+double dfi(double v[], double x){
+	double sum = 0;
+	for(int i = 0; i < 5; i++){
+		sum += pow(x,(double)i)*v[i]
+	}
+	return sum;
+}
+
+double dfi1(double v[], double x){
+	double sum = 0;
+	int p = 0;
+	for(int i = 1; i < 5; i++){
+		sum += pow(x,(double)p)*v[i]
+	}
+	return sum;	
+}
+
+double dfi2(double v[], double x){
+	double sum = 0;
+	int p = 0;
+	for(int i = 2; i < 5; i++){
+		sum += pow(x,(double)p)*v[i]
+	}	
+	return sum;	
+}
+
+double dfi3(double v[], double x){
+	double sum = 0;
+	int p = 0;
+	for(int i = 3; i < 5; i++){
+		sum += pow(x,(double)p)*v[i]
+	}	
+	return sum;	
+}
+
+double dfi4(double v[], double x){
+	double sum = 0;
+	int p = 0;
+	for(int i = 4; i < 5; i++){
+		sum += pow(x,(double)p)*v[i]
+	}	
+	return sum;	
+}
+
+
 
 void
 make_spl(points_t * pts, spline_t * spl)
@@ -45,11 +90,11 @@ make_spl(points_t * pts, spline_t * spl)
 			spl->f2[i] = 0;
 			spl->f3[i] = 0;
 			spl->f4[i] = 0;
-			spl->f[i]  += ck * fi  (a, b, nb, k, xx);
-			spl->f1[i] += ck * dfi (a, b, nb, k, xx);
-			spl->f2[i] += ck * d2fi(a, b, nb, k, xx);
-			spl->f3[i] += ck * d3fi(a, b, nb, k, xx);
-			spl->f4[i] += ck * d3fi(a, b, nb, k, xx);
+			spl->f[i]  +=  fi  (v, xx);
+			spl->f1[i] +=  dfi (v, xx);
+			spl->f2[i] +=  d2fi(v, xx);
+			spl->f3[i] +=  d3fi(v, xx);
+			spl->f4[i] +=  d3fi(v, xx);
 		}
 	}
 
