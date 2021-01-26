@@ -17,8 +17,11 @@ double fi(double v[], double x){
 double dfi(double v[], double x){
 	double sum = 0;
 	int p = 0;
+	int r = 1;
 	for(int i = 1; i < 5; i++){
-		sum += pow(x,(double)p)*v[i];
+		sum += pow(x,(double)p)*v[i]*r;
+		r++;
+		p++;
 	}
 	return sum;	
 }
@@ -26,8 +29,11 @@ double dfi(double v[], double x){
 double d2fi(double v[], double x){
 	double sum = 0;
 	int p = 0;
+	int r = 2;
 	for(int i = 2; i < 5; i++){
-		sum += pow(x,(double)p)*v[i];
+		sum += pow(x,(double)p)*v[i]*r*(r-1);
+		r++;
+		p++;
 	}	
 	return sum;	
 }
@@ -35,8 +41,11 @@ double d2fi(double v[], double x){
 double d3fi(double v[], double x){
 	double sum = 0;
 	int p = 0;
+	int r = 3;
 	for(int i = 3; i < 5; i++){
-		sum += pow(x,(double)p)*v[i];
+		sum += pow(x,(double)p)*v[i]*r*(r-1)*(r-2);
+		r++;
+		p++;
 	}	
 	return sum;	
 }
@@ -44,8 +53,11 @@ double d3fi(double v[], double x){
 double d4fi(double v[], double x){
 	double sum = 0;
 	int p = 0;
+	int r = 4;
 	for(int i = 4; i < 5; i++){
-		sum += pow(x,(double)p)*v[i];
+		sum += pow(x,(double)p)*v[i]*r*(r-1)*(r-2)*(r-3);
+		p++;
+		r++;
 	}	
 	return sum;	
 }
